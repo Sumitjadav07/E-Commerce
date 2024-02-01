@@ -31,11 +31,14 @@
                     <input type="text" placeholder="Enter your password" name="pass">
                 </div>
 
-
             </div>
             <div class="button">
                 <input type="submit" value="Login">
             </div>
+            
+            <span style="color : 'red';">${unameError}</span>
+            <span style="color : 'red';">${mnumberError}</span>
+            <span style="color : 'red';">${passError}</span>
 
         </form>
 

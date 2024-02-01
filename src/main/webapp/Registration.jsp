@@ -61,6 +61,11 @@
             <div class="button">
                 <input type="submit" value="Register">
             </div>
+            <span>${fullnameError}</span><br>
+            <span>${unameError}</span><br>
+            <span>${emailError}</span><br>
+            <span>${mnumberError}</span><br>
+            <span>${passError}</span><br>
         </form>
     </div>
 
