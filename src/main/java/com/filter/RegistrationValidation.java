@@ -17,42 +17,51 @@ public class RegistrationValidation implements Filter {
 
 	protected String fullNameValidation(String fullname , ServletRequest request) {
 		String fullnameError = "";
-		if(fullname == null || fullname.trim().length() == 0) {
+		String fullnameRegEx = "^[a-zA-Z]+(([ ][a-zA-Z ])?[a-zA-Z]*)*$\r\n";
+		if(fullname == null  ||  fullname.trim().length() == 0) {
 			fullnameError = "Please enter fullname";
 			request.setAttribute("fullnameError", fullnameError);
+			return fullnameError;
 		}
 		
-		if (fullname.matches("[A-Za-z]+") == false) {
-			fullnameError = "Fullname must be alphabatical";
+		if (fullname.matches(fullnameRegEx) == false) {
+			fullnameError = "Fullname only contains characters";
 			request.setAttribute("fullnameError", fullnameError);
+			return fullnameError;
 		}
 		return "";
 	}
 
 	protected String usernameValidation(String uname , ServletRequest request) {
 		String unameError = "";
+		String usernameRegEx = "^[a-zA-Z0-9]+$";
 		if (uname == null || uname.trim().length() == 0) {
 			unameError = "Please enter username";
 			request.setAttribute("unameError", unameError);
+			return unameError;
 		} 
 		
-		if (uname.matches("^[A-Za-z0-9]*$") == false) {
-			unameError = "Username must contains alphabets and numbers only ";
+		if (uname.matches(usernameRegEx) == false) {
+			unameError = "Username must contains only characters and numbers";
 			request.setAttribute("unameError", unameError);
+			return unameError;
 		}
 		return "";
 	}
 
 	protected String emailValidation(String email , ServletRequest request) {
 		String emailError = "";
+		String emailRegEx = "[a-zA-Z0-9]+@[a-zA-Z]+\\\\.[a-zA-Z]{2,5}";
 		if (email == null || email.trim().length() == 0) {
 			emailError = "Please enter email-id";
 			request.setAttribute("emailError", emailError);
+			return emailError;
 		} 
 		
-		if (email.matches("[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z]{2,5}") == false) {
+		if (email.matches(emailRegEx) == false) {
 			emailError = "Please enter valid email-id";
 			request.setAttribute("emailError", emailError);
+			return emailError;
 		}
 		return "";
 	}
@@ -60,20 +69,16 @@ public class RegistrationValidation implements Filter {
 	protected String mnumberValidation(String mnumber , ServletRequest request) {
 
 		String mnumberError = "";
-
+		String mnumberRegEx = "^\\+[0-9]{1,3}[0-9]{6,14}$\r\n";
 		if (mnumber == null || mnumber.trim().length() == 0) {
-			mnumberError = "Please Enter Mobile Number";
+			mnumberError = "Please enter mobile number";
 			request.setAttribute("mnumberError", mnumberError);
+			return mnumberError;
 		}
-
-		if (mnumber.length() != 10) {
-			mnumberError = "Mobile number should ne 10 digits";
+		if (mnumber.matches(mnumberRegEx)) {
+			mnumberError = "Mobile number should be 10 digits";;
 			request.setAttribute("mnumberError", mnumberError);
-		} 
-		
-		if (mnumber.matches("[0-9]+")) {
-			mnumberError = "Please enter valid mobile number";;
-			request.setAttribute("mnumberError", mnumberError);
+			return mnumberError;
 		}
 		return "";
 	}
@@ -81,49 +86,59 @@ public class RegistrationValidation implements Filter {
 	protected String passwordValidation(String pass , ServletRequest request) {
 
 		String passError = "";
-		if (pass.length() < 8 || pass.length() > 16) {
-			passError = "Password must be between 8 to 16 characters";
-			request.setAttribute("passError", passError);
+		if(pass == null || pass.trim().length() == 0) {
+			passError = "Please Enter Password";
+			request.setAttribute("passError",passError);
+			return passError;
 		}
-
-		if (pass == null || pass.trim().length() == 0) {
-			passError = "Please enter password";
-			request.setAttribute("passError", passError);
+		
+		if(pass.length() < 8 || pass.length() > 16){
+			passError = "Password should be between 8 and 16 characters long";
+			request.setAttribute("passError",passError);
+			return passError;
 		}
-
-		if (pass.matches(".*[A-Z]*.") == false) {
-			passError = "Password must have one uppercase letter";
-			request.setAttribute("passError", passError);
+		
+		if(pass.matches(".*[0-9].*") == false){
+			passError = "Password must have atleast One Digit";
+			request.setAttribute("passError",passError);
+			return passError;
 		}
-
-		if (pass.matches(".*[a-z]*.") == false) {
-			passError = "Password must have one lowercase letter";
-			request.setAttribute("passError", passError);
+		if(pass.matches(".*[A-Z].*") == false){
+			passError = "Password must have atleast One Upper Character";
+			request.setAttribute("passError",passError);
+			return passError;
 		}
-
-		if (pass.matches(".*[0-9]*.") == false) {
-			passError = "Password must have one number";
-			request.setAttribute("passError", passError);
+		if(pass.matches(".*[a-z].*") == false){
+			passError = "Password must have atleast One Lower Character";
+			request.setAttribute("passError",passError);
+			return passError;
 		}
-
-		if (pass.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*")) {
-			passError =  "Password must have one special character";
-			request.setAttribute("passError", passError);
+		if(pass.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*") == false){
+			passError = "Password must have atleast One Special Character";
+			request.setAttribute("passError",passError);
+			return passError;
 		}
-
 		return "";
 
 	}
 
-	// protected String cpassValidation(String cpass) {
-	//
-	// if(cpass.matches() == false) {
-	//
-	// }
-	//
-	// return null;
-	//
-	// }
+	 protected String cpassValidation(String pass , String cpass , ServletRequest request) {
+		
+		 String cpassError = "";
+		 if (cpass == null ||cpass.trim().length() == 0) {
+				cpassError = "Please enter confirm password";
+				request.setAttribute("cpassError",cpassError);
+				return cpassError;
+			}
+		 
+		 if(cpass.equals(pass) == false) {
+			 cpassError = "Confirm password must be match with password";
+			 request.setAttribute("cpassError" , cpassError);
+			 return cpassError;
+		 }
+		
+		return "";
+	 }
 
 	@Override
 	public void destroy() {
@@ -165,6 +180,10 @@ public class RegistrationValidation implements Filter {
 		
 		if(  passwordValidation( pass , request).isEmpty() == false) {
 			errors.add(passwordValidation( pass , request));
+		}
+		
+		if(  cpassValidation( pass , cpass , request).isEmpty() == false) {
+			errors.add(cpassValidation( pass , cpass , request));
 		}
 		
 		if( errors.isEmpty() == false) {

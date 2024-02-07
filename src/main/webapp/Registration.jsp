@@ -5,6 +5,29 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="registration.css">
+<script>
+window.onload = function() {
+    var validationErrors = <c:out value="${request.getAttribute('validationErrors')}" />;
+    if (validationErrors) {
+        displayErrors(validationErrors);
+    }
+}
+
+function displayErrors(errors) {
+    for (var i = 0; i < errors.length; i++) {
+        var errorField = errors[i].split(":")[0];
+        var errorMessage = errors[i].split(":")[1];
+        var errorElement = document.getElementById(errorField + "Error");
+
+        if (errorElement) {
+            errorElement.innerHTML = errorMessage;
+            errorElement.style.display = "inline"; // Show the error message
+        } else {
+            alert(errorMessage);
+        }
+    }
+}
+</script>
 <title>Registration Form</title>
 </head>
 <body>
@@ -16,26 +39,32 @@
                 <div class="input-box">
                     <span class="details">Full Name</span>
                     <input type="text" placeholder="Enter your name" name="fullname">
+                    <span class="error-details">${fullnameError}</span>
                 </div>
                 <div class="input-box">
                     <span class="details">Username</span>
                     <input type="text" placeholder="Enter your username" name="username">
+                    <span class="error-details">${unameError}</span>
                 </div>
                 <div class="input-box">
                     <span class="details">Email</span>
                     <input type="text" placeholder="Enter your email" name="email">
+                    <span class="error-details">${emailError}</span>
                 </div>
                 <div class="input-box">
                     <span class="details">Mobile Number</span>
                     <input type="text" placeholder="Enter your number" name="mobile">
+                    <span class="error-details">${mnumberError}</span>
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
                     <input type="text" placeholder="Enter your password" name="password">
+                    <span class="error-details">${passError}</span>
                 </div>
                 <div class="input-box">
                     <span class="details">Confirm Password</span>
                     <input type="text" placeholder="Confirm your password" name="confirmpassword">
+                    <span class="error-details">${cpassError}</span>
                 </div>
             </div>
             <div class="gender-details">
@@ -61,11 +90,7 @@
             <div class="button">
                 <input type="submit" value="Register">
             </div>
-            <span>${fullnameError}</span><br>
-            <span>${unameError}</span><br>
-            <span>${emailError}</span><br>
-            <span>${mnumberError}</span><br>
-            <span>${passError}</span><br>
+        
         </form>
     </div>
 
