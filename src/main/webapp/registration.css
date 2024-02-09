@@ -23,7 +23,9 @@ body{
     padding: 25px 30px;
     border-radius: 5px;
     /* border: 5px solid #3da0ce; */
-    box-shadow: 10px 10px 7px #328ebc;
+    /* box-shadow: 10px 10px 7px #328ebc; */
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .container .title{
@@ -39,7 +41,7 @@ body{
     bottom: 0;
     height: 3px;
     width: 30px;
-    /*background: linear-gradient(to top, #37ecba 0%, #72afd3 100%);*/
+    background: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
 }
 
 .container form .user-details{
@@ -61,23 +63,47 @@ form .user-details .input-box{
 }
 
 .user-details .input-box .error-details{
+	display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 5px;
+    font-size: 14px;
+    color: red;
+	/*
     display: flex;
+    border: 1px solid rgb(255, 255, 255);
+    height: 50px;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(121, 185, 201);
     position: relative;
-    /* top: -95px; */
     left: 120px;
     border-radius: 0px 10px 10px 10px;
-    font-size: 10px;
+    animation: falanu 0.7s linear;
+    */
 }
+/*
+@keyframes falanu{
+    0%{
+        opacity: 0;
+        width: 0;
+    }
+    100%{
+        opacity: 1;
+        width: 180px;
+    }
+}
+
 .error-details{
     width: 180px;
 }
+*/
 
 .user-details .input-box input{
     height: 45px;
     width: 100%;
     outline: none;
-    /* border-radius: 5px; */
+    border-radius: 5px;
     border: none;
     padding-left: 15px;
     font-size: 16px;
@@ -90,15 +116,6 @@ form .user-details .input-box{
 .user-details .input-box input:valid{
     border-color: #72afd3;
 }
-
-.error-details {
-    border: 1px solid rgb(255, 255, 255);
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 form .gender-details .gender-title{
     font-size: 20px;
@@ -152,11 +169,12 @@ form .button input{
     letter-spacing: 1px;
     font-size: 18px;
     font-weight: 600;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px;
 }
 
 
 form .button input:hover{
-    background: linear-gradient( #77c3ec 0%, rgb(121, 185, 201) 100%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 @media (max-width : 584px) {

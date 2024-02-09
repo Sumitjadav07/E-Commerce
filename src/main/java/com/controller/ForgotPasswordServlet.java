@@ -23,16 +23,12 @@ public class ForgotPasswordServlet extends HttpServlet {
 		
 		String uname = request.getParameter("uname");
 		String newpass = request.getParameter("newpass");
-		String confirmnewpass = request.getParameter("confirmnewpass");
-		String passError = "";
-		
+	
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			Connection conn = DriverManager.getConnection( url , username , password);
-			
-			if(newpass.equals(confirmnewpass)) {
 				
 				String query = "Update registration_data set password = ? where username = ? ";
 				PreparedStatement smst = conn.prepareStatement(query);
@@ -43,20 +39,15 @@ public class ForgotPasswordServlet extends HttpServlet {
 				
 				if(record == 1) {
 					
-					request.setAttribute("Password updated successfully", passError);
+					request.setAttribute("errorMSG", "Password updated successfully");
 					System.out.println("Password updated successfully");
 					
 				} else {
 					
-					request.setAttribute("Failed to update password", passError);
+					request.setAttribute("errorMSG", "Failed to update password");
 					System.out.println("Failed to update password");
 				}
 				
-			} else {
-				
-				request.setAttribute("Password and Confirm password do not match", passError);
-				System.out.println("Password and Confirm password do not match");
-			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -27,12 +27,12 @@ public class LoginValidation implements Filter{
 		System.out.println("Filter is Called");
 		
 		String uname = request.getParameter("username");
-		String mnumber = request.getParameter("mobile");
+		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		
 		boolean isValid = true;
 		String unameError = "";
-		String mnumberError = "";
+		String emailError = "";
 		String passError = "";
 		
 		if ( uname == null || uname.trim().length() == 0 ) {
@@ -41,15 +41,15 @@ public class LoginValidation implements Filter{
 			
 		} 
 		
-		if(mnumber == null || mnumber.trim().length() == 0) {
+		if(email == null || email.trim().length() == 0) {
 			isValid = false;
-			mnumberError = "Please enter mobile number";
+			emailError = "Please enter email-id";
 			
 		}
 		
 		if(pass == null || pass.trim().length() == 0) {
 			isValid = false;
-			passError = "Please enter mobile number";
+			passError = "Please enter password";
 			
 		}
 		
@@ -57,7 +57,7 @@ public class LoginValidation implements Filter{
 			chain.doFilter(request, response);
 		} else {
 			request.setAttribute("unameError", unameError);
-			request.setAttribute("mnumberError", mnumberError);
+			request.setAttribute("emailError", emailError);
 			request.setAttribute("passError", passError);
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}

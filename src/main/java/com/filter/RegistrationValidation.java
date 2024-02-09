@@ -17,7 +17,7 @@ public class RegistrationValidation implements Filter {
 
 	protected String fullNameValidation(String fullname , ServletRequest request) {
 		String fullnameError = "";
-		String fullnameRegEx = "^[a-zA-Z]+(([ ][a-zA-Z ])?[a-zA-Z]*)*$\r\n";
+		String fullnameRegEx = "^[a-zA-Z]+(?: [a-zA-Z]+)*$";
 		if(fullname == null  ||  fullname.trim().length() == 0) {
 			fullnameError = "Please enter fullname";
 			request.setAttribute("fullnameError", fullnameError);
@@ -34,7 +34,7 @@ public class RegistrationValidation implements Filter {
 
 	protected String usernameValidation(String uname , ServletRequest request) {
 		String unameError = "";
-		String usernameRegEx = "^[a-zA-Z0-9]+$";
+		String usernameRegEx = "^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{3,20}$";
 		if (uname == null || uname.trim().length() == 0) {
 			unameError = "Please enter username";
 			request.setAttribute("unameError", unameError);
@@ -51,7 +51,7 @@ public class RegistrationValidation implements Filter {
 
 	protected String emailValidation(String email , ServletRequest request) {
 		String emailError = "";
-		String emailRegEx = "[a-zA-Z0-9]+@[a-zA-Z]+\\\\.[a-zA-Z]{2,5}";
+		String emailRegEx = "[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z]{2,5}";
 		if (email == null || email.trim().length() == 0) {
 			emailError = "Please enter email-id";
 			request.setAttribute("emailError", emailError);
@@ -69,13 +69,13 @@ public class RegistrationValidation implements Filter {
 	protected String mnumberValidation(String mnumber , ServletRequest request) {
 
 		String mnumberError = "";
-		String mnumberRegEx = "^\\+[0-9]{1,3}[0-9]{6,14}$\r\n";
+		String mnumberRegEx = "^[0-9]{10}$";
 		if (mnumber == null || mnumber.trim().length() == 0) {
 			mnumberError = "Please enter mobile number";
 			request.setAttribute("mnumberError", mnumberError);
 			return mnumberError;
 		}
-		if (mnumber.matches(mnumberRegEx)) {
+		if (mnumber.matches(mnumberRegEx) == false) {
 			mnumberError = "Mobile number should be 10 digits";;
 			request.setAttribute("mnumberError", mnumberError);
 			return mnumberError;

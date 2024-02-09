@@ -22,16 +22,21 @@ public class LoginServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String uname = request.getParameter("username");
-		String mnumber = request.getParameter("mobile");
+		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		
+		
+		String unameError = "";
+		String emailError = "";
+		String passError = "";
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			Connection conn = DriverManager.getConnection( url , username , password);
 			
-			String query = "select username , mobile_number , password from registration_data where username = ?";
+			String query = "select username , email , password from registration_data where username = ?";
+//			String query = "select * from registration_data where username = ? and mobile_number = ? and password = ?";
 			PreparedStatement smst = conn.prepareStatement(query);
 			smst.setString(1, uname);
 				
@@ -43,25 +48,27 @@ public class LoginServlet extends HttpServlet {
 				
 				if(storedPassword.equals(pass)) {
 					
-					String storedMobile = rs.getString("mobile_number");
+					String storedEmail = rs.getString("email");
 					
-					if(storedMobile.equals(mnumber)) {
+					if(storedEmail.equals(email)) {
 						
 						//Successfully Login
-						System.out.println("Successfully Login!!!");
+						request.setAttribute("success", "Successfully login");
 						
 					} else {
-						
-						System.out.println("Invalid Mobile Number");
+						emailError = "Wrong email-ID";
+						request.setAttribute("emailError", emailError);
 					}
 					
 				} else {
 					//Failed Login
-					System.out.println("Invalid Password");
+					passError = "Wrong password";
+					request.setAttribute("passError", passError);
 				}
 				
 			} else {
-				System.out.println("Username not found");
+				unameError = "Username not found";
+				request.setAttribute("unameError", unameError);
 			}
 			
 		} catch (Exception e) {

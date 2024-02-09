@@ -19,26 +19,27 @@
                 <div class="input-box">
                     <span class="details">Username</span>
                     <input type="text" placeholder="Enter your username" name="username">
+                    <span class="error-details" >${unameError}</span>
                 </div>
 
                 <div class="input-box">
-                    <span class="details">Mobile Number</span>
-                    <input type="text" placeholder="Enter your number" name="mobile">
+                    <span class="details">Email</span>
+                    <input type="text" placeholder="Enter your email-id" name="email">
+                    <span class="error-details">${emailError}</span>
                 </div>
 
                 <div class="input-box">
                     <span class="details">Password</span>
                     <input type="text" placeholder="Enter your password" name="pass">
+                    <span class="error-details">${passError}</span>
                 </div>
 
             </div>
             <div class="button">
                 <input type="submit" value="Login">
             </div>
-            
-            <span style="color : 'red';">${unameError}</span>
-            <span style="color : 'red';">${mnumberError}</span>
-            <span style="color : 'red';">${passError}</span>
+
+			<span style="color : 'green';">${success}</span>
 
         </form>
 

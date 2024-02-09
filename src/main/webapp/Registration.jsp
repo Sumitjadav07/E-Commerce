@@ -5,29 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="registration.css">
-<script>
-window.onload = function() {
-    var validationErrors = <c:out value="${request.getAttribute('validationErrors')}" />;
-    if (validationErrors) {
-        displayErrors(validationErrors);
-    }
-}
-
-function displayErrors(errors) {
-    for (var i = 0; i < errors.length; i++) {
-        var errorField = errors[i].split(":")[0];
-        var errorMessage = errors[i].split(":")[1];
-        var errorElement = document.getElementById(errorField + "Error");
-
-        if (errorElement) {
-            errorElement.innerHTML = errorMessage;
-            errorElement.style.display = "inline"; // Show the error message
-        } else {
-            alert(errorMessage);
-        }
-    }
-}
-</script>
 <title>Registration Form</title>
 </head>
 <body>
