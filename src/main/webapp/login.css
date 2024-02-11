@@ -1,25 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&family=Kanit:ital,wght@1,300&family=Nova+Square&family=Open+Sans&family=Poppins&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
 
-*{
+:root {
+    --bg-clr-body: #032030;
+    --bg-clr-navbar: #022B42;
+    --font-clr: white;
+    --btn-bg-clr: #004D74;
+    --border-clr: #006DA4;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: 700;
 }
 
-body{
-    display: flex;
+body {
     height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-clr-body);
+    letter-spacing: 1px;
+}
+
+.navbar {
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--bg-clr-navbar);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--font-clr);
+}
+
+.navbar .logo {
+    height: 100%;
+    width: 25%;
+
+    /* Center the logo */
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    background: #89CFF0;
+
 }
 
-.container{
+.navbar .list-items {
+    height: 100%;
+    width: 50%;
+
+    /* Center the list-items */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navbar .login {
+    height: 100%;
+    width: 25%;
+
+    /* Center the login */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navbar .login a {
+    padding: 5px 10px;
+    /* border: 2px solid var(--border-clr); */
+    border-radius: 10px;
+    background-color: var(--btn-bg-clr);
+    transition: ease-in-out all .3s;
+}
+
+.navbar .login a:hover {
+    padding: 7px 12px;
+    /* border: 2px solid var(--border-clr); */
+    border-radius: 10px;
+    background-color: var(--btn-bg-clr);
+}
+
+/*----------------------------------------------*/
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     max-width: 400px;
     width: 100%;
-    background: white;
+    background: var(--bg-clr-navbar);
     padding: 25px 30px;
     border-radius: 5px;
     /* border: 5px solid #3da0ce; */
@@ -28,77 +103,50 @@ body{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.container .title{
+.container .title {
+    color: var(--font-clr);
     font-size: 20px;
     font-weight: 500;
     position: relative;
 }
 
-.container .title::before{
+.container .title::before {
     content: '';
     position: absolute;
     left: 0;
-    bottom:0;
-    height: 3px;
-    width: 23px;
+    bottom: 0;
+    height: 2.3px;
+    width: 20px;
     background: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
 }
 
-.container form .user-details{
+.container form .user-details {
     display: flex;
     flex-direction: column;
-    margin: 20px 0px 12px 0px ;
+    margin: 20px 0px 12px 0px;
 }
 
-form .user-details .input-box{
+form .user-details .input-box {
+    color: var(--font-clr);
     margin-bottom: 15px;
     width: calc(100 / 2 - 20px);
 }
 
-.user-details .input-box .details{
+.user-details .input-box .details {
     display: block;
     margin-bottom: 5px;
     font-weight: 500;
 }
 
-.user-details .input-box .error-details{
-	display: flex;
+.user-details .input-box .error-details {
+    display: flex;
     align-items: center;
     width: 100%;
     margin-top: 5px;
-    font-size: 14px;
     color: red;
-	/*
-    display: flex;
-	border: 1px solid rgb(255, 255, 255);
-    height: 50px;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(121, 185, 201);
-    position: relative;
-    left: 120px;
-    border-radius: 0px 10px 10px 10px;
-    animation: falanu 0.7s linear;
-    */
-}
-/*
-@keyframes falanu{
-    0%{
-        opacity: 0;
-        width: 0;
-    }
-    100%{
-        opacity: 1;
-        width: 220.5px;
-    }
 }
 
-.error-details{
-    width: 220.5px;
- }
- */
-
-.user-details .input-box input{
+.user-details .input-box input {
     height: 45px;
     width: 100%;
     outline: none;
@@ -107,33 +155,33 @@ form .user-details .input-box{
     padding-left: 15px;
     font-size: 16px;
     border-bottom: 2px solid black;
-    background-color: rgba(232, 230, 230, 0.413);
+    background-color: rgba(54, 59, 79, 0.413);
     transition: all 0.3s ease;
 }
 
 .user-details .input-box input:focus,
-.user-details .input-box input:valid{
-    border-color: #72afd3;
+.user-details .input-box input:valid {
+    border-color: var(--font-clr);
 }
 
-form .button{
-    height : 45px;
+form .button {
+    height: 45px;
 }
 
-form .button input{
+form .button input {
     height: 100%;
     width: 100%;
     outline: none;
     border: none;
-    color: #fff;
+    color: var(--font-clr);
     border-radius: 5px;
-    background: #77c3ec;
+    background: var(--btn-bg-clr);
     letter-spacing: 1px;
     font-size: 18px;
     font-weight: 600;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px;
 }
 
-form .button input:hover{
+form .button input:hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }

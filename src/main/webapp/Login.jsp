@@ -9,10 +9,25 @@
 </head>
 <body>
 
+	<nav class="navbar">
+        <div class="logo">
+            <a href="Home.html">E Commerce</a>
+        </div>
+        <div class="list-items">
+            <a href="Home.html">Home</a>
+            <a href="AboutUs.html">About us </a>
+            <a href="">Products</a>
+            <a href="">Blog</a>
+        </div>
+        <div class="login">
+            <a href="Registration.jsp">Sign Up</a> 
+            <a href="Login.jsp">Log In</a>
+        </div>
+    </nav>
 	
     <div class="container">
 
-        <div class="title">Login</div>
+        <div class="title"><span id="element"></span></div>
         <form action="LoginServlet" method="post">
 
             <div class="user-details">
@@ -44,6 +59,16 @@
         </form>
 
     </div>
+    
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- Setup and start animation! -->
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Login'],
+            typeSpeed: 50,
+        });
+    </script>
 
 </body>
 </html>
