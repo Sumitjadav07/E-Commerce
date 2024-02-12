@@ -83,7 +83,10 @@
             <div class="button">
                 <input type="submit" value="Register">
             </div>
-        
+        	<div class="login">
+                <p>Already have an account?</p>
+                <a href="Login.jsp">Login here</a>
+            </div>
         </form>
     </div>
     

@@ -53,6 +53,10 @@
             <div class="button">
                 <input type="submit" value="Login">
             </div>
+            <div class="fpass">
+                <p>Forgot Password?</p>
+                <a href="ForgotPassword.jsp">Click here to reset</a>
+            </div>
 
 			<span style="color : 'green';">${success}</span>
 

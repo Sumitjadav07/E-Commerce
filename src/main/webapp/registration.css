@@ -94,7 +94,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 600px;
-    height: 70%;
+    height: 71%;
     width: 100%;
     background: var(--bg-clr-navbar);
     margin-top: 2rem;
@@ -145,6 +145,7 @@ form .user-details .input-box {
 
 .user-details .input-box .error-details {
     display: flex;
+    display: none;
     align-items: center;
     width: 100%;
     margin-top: 5px;
@@ -156,6 +157,7 @@ form .user-details .input-box {
     width: 100%;
     outline: none;
     border-radius: 5px;
+    color: var(--font-clr);
     border: none;
     padding-left: 15px;
     font-size: 16px;
@@ -241,8 +243,8 @@ form .login{
 
 form .login a{
     margin-left: 16px;
-    color: var(--font-clr);
     text-decoration: none;
+    color: #0066CC;
 }
 
 @media (max-width : 584px) {
