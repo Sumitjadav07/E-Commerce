@@ -86,4 +86,52 @@ body{
     background-color: var(--btn-bg-clr);
 }
 
+.hamburger-menu{
+    fill: white;
+    margin-right: 1em;
+    display: none;
+}
+
+/* side-nabar css starts */
+
+.side-navbar{
+    height: 100%;
+    width: 225px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #006da475;
+    backdrop-filter:  blur(10px);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+}
+
+.side-navbar a {
+    width: 100%;
+    padding: 1rem;
+}
+
+.side-navbar a:hover{
+    background-color: #28759b75;
+}
+
+@media(max-width : 723.2px){
+    .navbar .list-items{
+        display: none;
+    }
+
+    .navbar .login{
+        display: none;
+    }
+
+    .navbar .hamburger-menu{
+        display: block;
+    }
+}
+
 
